@@ -88,6 +88,11 @@ main {
   margin-top: 6px;
 }
 
+.weather-forecast {
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   border-top: 1px solid #f9f7fe;
   text-align: center;
