@@ -67,6 +67,35 @@ function formatDate(date) {
   return `${formattedDay} ${hours}:${minutes}`;
 }
 
+function displayForecast(response) {
+  let forecastHtml = "";
+  
+  response.data.daily.ForEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =+
+      `
+      <div class="weather-forecast-day">
+        <div class="weather-forecast-date">
+
+      <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+      <div class="weather-forecast-temperatures">
+        <div class="weather-forecast-temperature">
+          <strong>${Math.round(day.temperature.maximum)}­°</strong>
+        </div>
+      <div class="weather-forecast-temperature">
+      ${Math.round(day.temperature.minimum)}°
+      </div>
+    </div>
+  </div>  
+      `;
+    }
+  });
+
+
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = forecastHtml;
+}
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchSubmit);
 
